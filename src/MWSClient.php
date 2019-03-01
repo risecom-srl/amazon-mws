@@ -926,7 +926,7 @@ class MWSClient{
 
         $csv->insertOne(['TemplateType=Offer', 'Version=2014.0703']);
 
-        $price_header = ( $type === MWSProduct::BUSINESS) ? 'business_price' : 'price'
+        $price_header = ( $type === MWSProduct::BUSINESS) ? 'business_price' : 'price';
 
         $header = ['sku', $price_header, 'quantity', 'product-id',
             'product-id-type', 'condition-type', 'condition-note',
