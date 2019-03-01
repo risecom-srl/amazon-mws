@@ -913,7 +913,7 @@ class MWSClient{
      * @param  object $MWSProduct or array of MWSProduct objects
      * @return array
      */
-    public function postProduct($MWSProduct) {
+    public function postProduct($MWSProduct, $type = MWSProduct::RETAIL) {
 
         if (!is_array($MWSProduct)) {
             $MWSProduct = [$MWSProduct];
@@ -926,7 +926,9 @@ class MWSClient{
 
         $csv->insertOne(['TemplateType=Offer', 'Version=2014.0703']);
 
-        $header = ['sku', 'price', 'quantity', 'product-id',
+        $price_header = ( $type === MWSProduct::BUSINESS) ? 'business_price' : 'price'
+
+        $header = ['sku', $price_header, 'quantity', 'product-id',
             'product-id-type', 'condition-type', 'condition-note',
             'ASIN-hint', 'title', 'product-tax-code', 'operation-type',
             'sale-price', 'sale-start-date', 'sale-end-date', 'leadtime-to-ship',

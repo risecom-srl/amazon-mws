@@ -5,6 +5,9 @@ use Exception;
 
 class MWSProduct{
 
+    const RETAIL = 'retail';
+    const BUSINESS = 'business';
+
     public $sku;
     public $price;
     public $quantity = 0;
